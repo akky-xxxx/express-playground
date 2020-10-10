@@ -17,6 +17,7 @@ app.set("views", "./src/app/views/pages")
 app.set("view engine", "pug")
 
 // register middleware
+app.use(express.static("./src/app/assets"))
 app.use(express.json())
 app.use(initializeCustomData, setCustomData, showCustomData)
 
