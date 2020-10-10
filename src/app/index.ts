@@ -9,5 +9,5 @@ import { PORT } from "./shared/const/common"
 const logger = createLogger(__filename)
 
 app.listen(PORT, () => {
-  logger.trace(`server started on http://localohst:${PORT}`)
+  logger.trace(`server started on http://localhost:${PORT}`)
 })
