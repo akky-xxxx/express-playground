@@ -8,3 +8,7 @@ export type UniqueData = {
 export type UniqueSession = {
   uniqueData: Partial<UniqueData>
 } & Request["session"]
+
+export type UniqueReq = {
+  unique?: Partial<UniqueData>
+} & Request

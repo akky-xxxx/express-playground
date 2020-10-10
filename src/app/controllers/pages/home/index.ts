@@ -4,6 +4,7 @@ import { RequestHandler } from "express"
 // import others
 import { hasUniqueSession } from "../../../shared/utils/hasUniqueSession"
 import { hasUniqueData } from "../../../shared/utils/hasUniqueData"
+import { hasUnique } from "../../../shared/utils/hasUnique"
 import { PageController } from "../../../shared/types/common"
 import { PageEndpoints } from "../../../shared/const/common"
 import { RenderOptions } from "./types"
@@ -17,9 +18,13 @@ const home: RequestHandler = (req, res) => {
     res.send("error!")
     return
   }
+  if (!hasUnique(req)) {
+    res.send("error!")
+    return
+  }
   const renderOption: RenderOptions = {
     message: "Home",
-    name: req.session.uniqueData.name,
+    name: req.unique?.name || "",
   }
   res.render("home", renderOption)
 }
