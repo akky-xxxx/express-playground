@@ -2,9 +2,9 @@
 import express, { Application } from "express"
 
 // import middleware
-import { initializeSession } from "./middleware/initializeSession"
-import { setSession } from "./middleware/setSession"
-import { showSession } from "./middleware/showSession"
+import { initializeCustomData } from "./middleware/initializeCustomData"
+import { setCustomData } from "./middleware/setCustomData"
+import { showCustomData } from "./middleware/showCustomData"
 
 // import controllers
 import { getPageRouter } from "../../controllers/pages"
@@ -22,7 +22,7 @@ export const initializeApp: InitializeApp = () => {
 
   // register middleware
   app.use(express.json())
-  app.use(initializeSession, setSession, showSession)
+  app.use(initializeCustomData, setCustomData, showCustomData)
 
   // register controllers
   app.use(pageRouter)

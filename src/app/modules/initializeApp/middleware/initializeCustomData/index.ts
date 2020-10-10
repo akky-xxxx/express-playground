@@ -5,7 +5,7 @@ import { RequestHandler } from "express"
 import { UniqueReq } from "../../../../shared/types/session"
 
 // main
-export const initializeSession: RequestHandler = (req, _res, next) => {
+export const initializeCustomData: RequestHandler = (req, _res, next) => {
   ;(req as UniqueReq).unique = {}
 
   next()
