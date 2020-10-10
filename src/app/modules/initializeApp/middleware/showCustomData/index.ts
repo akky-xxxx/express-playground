@@ -11,7 +11,5 @@ export const showCustomData: RequestHandler = (req, _res, next) => {
   if (hasUnique(req)) {
     logger.trace(req.unique)
   }
-
-  logger.trace(req.originalUrl)
   next()
 }
