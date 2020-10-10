@@ -2,7 +2,7 @@
 import { RequestHandler } from "express"
 
 // import others
-import { hasUnique } from "../../../../shared/utils/hasUnique"
+import { hasUnique } from "../../../../../../shared/utils/hasUnique"
 
 // main
 export const setCustomData: RequestHandler = (req, _res, next) => {

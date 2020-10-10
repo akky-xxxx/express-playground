@@ -2,9 +2,7 @@
 import express from "express"
 
 // import middleware
-import { initializeCustomData } from "./middleware/initializeCustomData"
-import { setCustomData } from "./middleware/setCustomData"
-import { showCustomData } from "./middleware/showCustomData"
+import { adjustCustomData } from "./middleware/adjustCustomData"
 
 // import controllers
 import { pageRouter } from "../../controllers/pages"
@@ -22,7 +20,7 @@ app.set("view engine", "pug")
 // register middleware
 app.use(express.static(`${APP_ROOT}/assets`))
 app.use(express.json())
-app.use(initializeCustomData, setCustomData, showCustomData)
+app.use(adjustCustomData)
 
 // register controllers
 app.use(pageRouter)
