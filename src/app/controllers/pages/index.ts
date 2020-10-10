@@ -15,5 +15,4 @@ pagesControllers.forEach(([endPoint, requestHandler]) => {
   pageRouter.get(endPoint, requestHandler)
 })
 
-type GetPageRouter = () => Router
-export const getPageRouter: GetPageRouter = () => pageRouter
+export { pageRouter }

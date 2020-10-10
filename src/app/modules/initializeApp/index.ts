@@ -7,11 +7,10 @@ import { setCustomData } from "./middleware/setCustomData"
 import { showCustomData } from "./middleware/showCustomData"
 
 // import controllers
-import { getPageRouter } from "../../controllers/pages"
+import { pageRouter } from "../../controllers/pages"
 
 // main
 const app = express()
-const pageRouter = getPageRouter()
 
 type InitializeApp = () => Application
 export const initializeApp: InitializeApp = () => {
