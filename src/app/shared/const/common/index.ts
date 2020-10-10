@@ -4,3 +4,5 @@ export const PORT = 3000
 export const PageEndpoints = {
   HOME: "/",
 } as const
+
+export const APP_ROOT = "./src/app"
