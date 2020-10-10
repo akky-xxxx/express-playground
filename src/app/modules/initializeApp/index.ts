@@ -1,5 +1,6 @@
 // import node_modules
 import express from "express"
+import helmet from "helmet"
 
 // import middleware
 import { adjustCustomData } from "./middleware/adjustCustomData"
@@ -12,6 +13,7 @@ import { APP_ROOT } from "../../shared/const/common"
 
 // main
 const app = express()
+app.use(helmet())
 
 app.set("trust proxy", 1)
 app.set("views", `${APP_ROOT}/views/pages`)
