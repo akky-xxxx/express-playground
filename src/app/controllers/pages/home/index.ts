@@ -5,7 +5,7 @@ import { RequestHandler } from "express"
 import { hasUnique } from "../../../shared/utils/hasUnique"
 import { PageController } from "../../../shared/types/common"
 import { PageEndpoints } from "../../../shared/const/common"
-import { RenderOptions } from "./types"
+import { getRenderOptions } from "../../../models/pages/home"
 
 // main
 const home: RequestHandler = (req, res) => {
@@ -13,10 +13,8 @@ const home: RequestHandler = (req, res) => {
     res.send("error!")
     return
   }
-  const renderOption: RenderOptions = {
-    message: "Home",
-    name: req.unique?.name || "",
-  }
+
+  const renderOption = getRenderOptions(req)
   res.render("home", renderOption)
 }
 
