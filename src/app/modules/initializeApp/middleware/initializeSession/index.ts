@@ -6,10 +6,6 @@ import { UniqueReq } from "../../../../shared/types/session"
 
 // main
 export const initializeSession: RequestHandler = (req, _res, next) => {
-  if (req.session) {
-    req.session.uniqueData = {}
-  }
-
   ;(req as UniqueReq).unique = {}
 
   next()

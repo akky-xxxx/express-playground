@@ -2,16 +2,10 @@
 import { RequestHandler } from "express"
 
 // import others
-import { hasUniqueSession } from "../../../../shared/utils/hasUniqueSession"
 import { hasUnique } from "../../../../shared/utils/hasUnique"
 
 // main
-export const setSession: RequestHandler = (req, res, next) => {
-  if (!hasUniqueSession(req.session)) {
-    res.redirect("/error")
-    return
-  }
-
+export const setSession: RequestHandler = (req, _res, next) => {
   if (hasUnique(req)) {
     req.unique = {
       auth: 12,
@@ -19,9 +13,5 @@ export const setSession: RequestHandler = (req, res, next) => {
     }
   }
 
-  req.session.uniqueData = {
-    auth: 1,
-    name: "Taro",
-  }
   next()
 }

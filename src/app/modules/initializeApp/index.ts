@@ -1,6 +1,5 @@
 // import node_modules
 import express, { Application } from "express"
-import session from "express-session"
 
 // import middleware
 import { initializeSession } from "./middleware/initializeSession"
@@ -9,9 +8,6 @@ import { showSession } from "./middleware/showSession"
 
 // import controllers
 import { getPageRouter } from "../../controllers/pages"
-
-// import const
-import { SESSION_OPTIONS } from "../../shared/const/common"
 
 // main
 const app = express()
@@ -26,7 +22,6 @@ export const initializeApp: InitializeApp = () => {
 
   // register middleware
   app.use(express.json())
-  app.use(session(SESSION_OPTIONS))
   app.use(initializeSession, setSession, showSession)
 
   // register controllers

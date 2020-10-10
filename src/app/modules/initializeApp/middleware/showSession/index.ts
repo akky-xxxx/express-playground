@@ -3,26 +3,15 @@ import { RequestHandler } from "express"
 
 // import others
 import { createLogger } from "../../../../shared/utils/createLogger"
-import { hasUniqueSession } from "../../../../shared/utils/hasUniqueSession"
-import { hasUniqueData } from "../../../../shared/utils/hasUniqueData"
 import { hasUnique } from "../../../../shared/utils/hasUnique"
 
 // main
 const logger = createLogger(__filename)
-export const showSession: RequestHandler = (req, res, next) => {
-  if (
-    !hasUniqueSession(req.session) ||
-    !hasUniqueData(req.session.uniqueData)
-  ) {
-    res.redirect("/error")
-    return
-  }
-
+export const showSession: RequestHandler = (req, _res, next) => {
   if (hasUnique(req)) {
     logger.trace(req.unique)
   }
 
-  logger.trace(req.session.uniqueData)
   logger.trace(req.originalUrl)
   next()
 }
