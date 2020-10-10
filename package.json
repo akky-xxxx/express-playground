@@ -13,6 +13,7 @@
     "lint": "run-p lint:*",
     "lint:pug": "pug-lint src",
     "lint:ts": "eslint './src/**/*.ts'",
+    "start": "NODE_ENV=production ts-node  --files ./src/app/index.ts",
     "test": "jest"
   },
   "dependencies": {
