@@ -11,8 +11,8 @@
     "fix:pack": "fixpack",
     "fix:ts": "eslint './src/**/*.ts' --fix",
     "lint": "run-p lint:*",
-    "lint:ts": "eslint './src/**/*.ts'",
     "lint:pug": "pug-lint src",
+    "lint:ts": "eslint './src/**/*.ts'",
     "test": "jest"
   },
   "dependencies": {
