@@ -8,13 +8,14 @@ import { setSession } from "./middleware/setSession"
 import { showSession } from "./middleware/showSession"
 
 // import controllers
-import { pagesControllers } from "../../controllers/pages"
+import { getPageRouter } from "../../controllers/pages"
 
 // import const
 import { SESSION_OPTIONS } from "../../shared/const/common"
 
 // main
 const app = express()
+const pageRouter = getPageRouter()
 
 type InitializeApp = () => Application
 export const initializeApp: InitializeApp = () => {
@@ -29,9 +30,7 @@ export const initializeApp: InitializeApp = () => {
   app.use(initializeSession, setSession, showSession)
 
   // register controllers
-  pagesControllers.forEach(([endPoint, requestHandler]) => {
-    app.get(endPoint, requestHandler)
-  })
+  app.use(pageRouter)
 
   return app
 }
