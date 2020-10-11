@@ -7,9 +7,9 @@ import { getTodoItems } from "../../../../../models/api/todoItems/getTodoItems"
 
 // main
 const logger = createLogger(__filename)
-export const getTodoList: RequestHandler = async (_req, res) => {
+export const getTodoList: RequestHandler = async (req, res) => {
   try {
-    const todoList = await getTodoItems()
+    const todoList = await getTodoItems(req)
     res.status(200).json(todoList)
   } catch (error) {
     logger.error(error)
