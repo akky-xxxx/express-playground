@@ -11,6 +11,6 @@ export const putTodoItem: RequestHandler = async (req, res) => {
     res.status(200).json({ success: true })
   } catch (error) {
     logger.error(error)
-    res.status(400).send(error.toString())
+    res.status(error?.status || 500).send(error.toString())
   }
 }
