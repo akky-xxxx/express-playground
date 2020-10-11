@@ -6,6 +6,7 @@ import { Request } from "express"
 import { ToDoItem } from "../../../../shared/types/database"
 import { todoItemModel } from "../../../../shared/models/todoItemModel"
 import { getFindQuery } from "./modules/getFindQuery"
+import { ThisError } from "../../../../shared/utils/ThisError"
 
 // main
 type GetTodoItems = (req: Request) => Promise<ToDoItem[]>
@@ -18,6 +19,7 @@ export const getTodoItems: GetTodoItems = async (req) => {
     await mongoose.disconnect()
     return Promise.resolve(todoList)
   } catch (error) {
-    return Promise.reject(error)
+    const thisError = new ThisError({ error })
+    return Promise.reject(thisError)
   }
 }

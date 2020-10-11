@@ -12,13 +12,13 @@ type UpdateTodoItem = (req: Request) => Promise<void>
 export const updateTodoItem: UpdateTodoItem = async (req) => {
   const { body } = req
   if (!body.id) {
-    const error = new ThisError({ status: 400, message: "id なし" })
-    return Promise.reject(error)
+    const thisError = new ThisError({ status: 400, message: "id なし" })
+    return Promise.reject(thisError)
   }
 
   if (!body.title && !body.description && !body.is_done) {
-    const error = new ThisError({ status: 400, message: "更新項目 なし" })
-    return Promise.reject(error)
+    const thisError = new ThisError({ status: 400, message: "更新項目 なし" })
+    return Promise.reject(thisError)
   }
 
   const updateBody = removeUndefinedKey({
@@ -32,6 +32,7 @@ export const updateTodoItem: UpdateTodoItem = async (req) => {
     await mongoose.disconnect()
     return Promise.resolve()
   } catch (error) {
-    return Promise.reject(error)
+    const thisError = new ThisError({ error })
+    return Promise.reject(thisError)
   }
 }

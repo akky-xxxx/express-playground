@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 
 // import others
 import { todoItemModel } from "../../../../shared/models/todoItemModel"
+import { ThisError } from "../../../../shared/utils/ThisError"
 
 // main
 type RegisterTodoItem = (req: Request) => Promise<void>
@@ -11,8 +12,8 @@ export const registerTodoItem: RegisterTodoItem = async (req) => {
   const { body } = req
   try {
     if (!body.title) {
-      const error = new Error("title なし")
-      return Promise.reject(error)
+      const thisError = new ThisError({ status: 400, message: "title なし" })
+      return Promise.reject(thisError)
     }
 
     await todoItemModel.create({
@@ -25,6 +26,7 @@ export const registerTodoItem: RegisterTodoItem = async (req) => {
 
     return Promise.resolve()
   } catch (error) {
-    return Promise.reject(error)
+    const thisError = new ThisError({ error })
+    return Promise.reject(thisError)
   }
 }
