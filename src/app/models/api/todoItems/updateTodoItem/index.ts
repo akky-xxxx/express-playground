@@ -5,18 +5,19 @@ import mongoose from "mongoose"
 // import others
 import { todoItemModel } from "../../../../shared/models/todoItemModel"
 import { removeUndefinedKey } from "../../../../shared/utils/removeUndefinedKeys"
+import { ThisError } from "../../../../shared/utils/ThisError"
 
 // main
 type UpdateTodoItem = (req: Request) => Promise<void>
 export const updateTodoItem: UpdateTodoItem = async (req) => {
   const { body } = req
   if (!body.id) {
-    const error = new Error("id なし")
+    const error = new ThisError({ status: 400, message: "id なし" })
     return Promise.reject(error)
   }
 
   if (!body.title && !body.description && !body.is_done) {
-    const error = new Error("更新項目 なし")
+    const error = new ThisError({ status: 400, message: "更新項目 なし" })
     return Promise.reject(error)
   }
 
