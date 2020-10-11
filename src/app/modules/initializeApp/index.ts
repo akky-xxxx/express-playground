@@ -7,6 +7,7 @@ import compression from "compression"
 import { adjustCustomData } from "./middleware/adjustCustomData"
 
 // import controllers
+import { apiRouter } from "../../controllers/api"
 import { pageRouter } from "../../controllers/pages"
 
 // import others
@@ -27,6 +28,7 @@ app.use(express.json())
 app.use(adjustCustomData)
 
 // register controllers
+app.use("/api", apiRouter)
 app.use(pageRouter)
 
 export { app }
