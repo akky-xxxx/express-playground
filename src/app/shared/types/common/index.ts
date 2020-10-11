@@ -8,3 +8,5 @@ import { PageEndpoints } from "../../const/common"
 type PageEndpoints = typeof PageEndpoints
 type PageEndpointKeys = keyof PageEndpoints
 export type PageController = [PageEndpoints[PageEndpointKeys], RequestHandler]
+
+export type AnyObject = Record<string, unknown>
