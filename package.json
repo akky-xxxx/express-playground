@@ -4,7 +4,8 @@
     "check-code": "run-p lint check-spell check-type",
     "check-spell": "cspell './src/**/*.ts' './spec/api/**'",
     "check-type": "tsc",
-    "dev": "nodemon",
+    "db": "docker-compose up",
+    "dev": "npm-run-all -p db serve:dev",
     "fix": "run-p fix:*",
     "fix:config": "prettier ./.eslintrc.js ./*.js --write",
     "fix:json": "prettier ./*.json ./**/*.json --write",
@@ -13,6 +14,7 @@
     "lint": "run-p lint:*",
     "lint:pug": "pug-lint src",
     "lint:ts": "eslint './src/**/*.ts'",
+    "serve:dev": "nodemon",
     "start": "NODE_ENV=production ts-node  --files ./src/app/index.ts",
     "test": "jest"
   },
